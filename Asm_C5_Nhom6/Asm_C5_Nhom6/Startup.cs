@@ -1,4 +1,5 @@
 ﻿using Asm_C5_Nhom6.Data;
+using Asm_C5_Nhom6.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,7 @@ namespace Asm_C5_Nhom6
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Asm_C5_Nhom6", Version = "v1" });
             });
 
+            services.AddScoped<IResponsitory, Responsitory>();
 
             //Kết Nối
             services.AddDbContext<AppDbcontext>(options =>
