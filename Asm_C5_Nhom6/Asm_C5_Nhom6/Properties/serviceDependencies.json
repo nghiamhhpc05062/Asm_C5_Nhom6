@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:Asm_C5_Nhom6ContextConnection"
+    }
+  }
+}

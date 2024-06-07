@@ -1,6 +1,8 @@
+﻿using Asm_C5_Nhom6.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,12 +27,18 @@ namespace Asm_C5_Nhom6
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //Tạo API
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Asm_C5_Nhom6", Version = "v1" });
             });
+
+
+            //Kết Nối
+            services.AddDbContext<AppDbcontext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +59,7 @@ namespace Asm_C5_Nhom6
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
