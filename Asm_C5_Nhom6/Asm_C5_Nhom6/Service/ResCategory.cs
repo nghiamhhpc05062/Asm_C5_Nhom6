@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace Asm_C5_Nhom6.Service
 {
-    public class Responsitory : IResponsitory
+    public class ResCategory : IResCategory
     {
         private readonly AppDbcontext _context;
 
-        public Responsitory(AppDbcontext context)
+        public ResCategory(AppDbcontext context)
         {
             _context = context;
         }
@@ -20,13 +20,6 @@ namespace Asm_C5_Nhom6.Service
             _context.Add(category);
             _context.SaveChanges();
             return category;
-        }
-
-        public Product Addproduct(Product product)
-        {
-            _context.Add(product);
-            _context.SaveChanges();
-            return product;
         }
 
         //Delete
@@ -45,11 +38,6 @@ namespace Asm_C5_Nhom6.Service
             }
         }
 
-        public Product Deleteproduct(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
 
         //Get ID
         public Category GetIDcategory(int id)
@@ -64,21 +52,12 @@ namespace Asm_C5_Nhom6.Service
             return (Category)loai;
         }
 
-        public Product GetIDproduct(int id)
-        {
-            throw new System.NotImplementedException();
-        }
 
 
         //Get
-        public IEnumerable<Category> GetCategory()
+        public IEnumerable<Category> GetCategories()
         {
             return _context.Categories.ToList();
-        }
-
-        public IEnumerable<Product> Getproduct()
-        {
-            return _context.Products.ToList();
         }
 
 
@@ -98,9 +77,10 @@ namespace Asm_C5_Nhom6.Service
             return existingLoai;
         }
 
-        public Product Updateproduct(Product product)
+
+        public IEnumerable<Category> Getcategory()
         {
-            throw new System.NotImplementedException();
+            return GetCategories();
         }
 
     }

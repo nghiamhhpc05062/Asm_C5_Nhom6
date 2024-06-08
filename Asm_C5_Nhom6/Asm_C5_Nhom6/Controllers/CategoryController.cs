@@ -10,8 +10,8 @@ namespace Asm_C5_Nhom6.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly IResponsitory _loaiResponsitory;
-        public CategoryController(IResponsitory loai)
+        private readonly IResCategory _loaiResponsitory;
+        public CategoryController(IResCategory loai)
         {
             _loaiResponsitory = loai;
         }
@@ -19,7 +19,7 @@ namespace Asm_C5_Nhom6.Controllers
         [HttpGet]
         public IEnumerable<Category> GetAll()
         {
-            return _loaiResponsitory.GetCategory();
+            return _loaiResponsitory.Getcategory();
         }
 
         [HttpGet("{id}")]

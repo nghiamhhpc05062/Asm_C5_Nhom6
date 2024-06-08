@@ -35,7 +35,15 @@ namespace Asm_C5_Nhom6
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Asm_C5_Nhom6", Version = "v1" });
             });
 
-            services.AddScoped<IResponsitory, Responsitory>();
+            services.AddScoped<IResProduct, ResProduct>();
+            services.AddScoped<IResCategory, ResCategory>();
+            services.AddScoped<IResMenu, ResMenu>();
+            services.AddScoped<IResOrderItem, ResOrderItem>();
+            services.AddScoped<IResOrder, ResOrder>();
+            services.AddScoped<IResRestaurant, ResRestaurant>();
+            services.AddScoped<IResReview, ResReview>();
+            services.AddScoped<IResUser, ResUser>();
+            services.AddScoped<IResVoter, ResVoter>();
 
             //Kết Nối
             services.AddDbContext<AppDbcontext>(options =>
