@@ -12,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Asm_C5_Nhom6
@@ -35,6 +36,12 @@ namespace Asm_C5_Nhom6
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Asm_C5_Nhom6", Version = "v1" });
             });
 
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+                options.JsonSerializerOptions.MaxDepth = 64; // Increase depth if necessary
+            });
+
             services.AddScoped<IResProduct, ResProduct>();
             services.AddScoped<IResCategory, ResCategory>();
             services.AddScoped<IResMenu, ResMenu>();
@@ -43,7 +50,7 @@ namespace Asm_C5_Nhom6
             services.AddScoped<IResRestaurant, ResRestaurant>();
             services.AddScoped<IResReview, ResReview>();
             services.AddScoped<IResUser, ResUser>();
-            services.AddScoped<IResVoter, ResVoter>();
+            services.AddScoped<IResVouter, ResVouter>();
 
             //Kết Nối
             services.AddDbContext<AppDbcontext>(options =>

@@ -11,6 +11,7 @@ namespace Asm_C5_Nhom6.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IResProduct _productResponsitory;
+
         public ProductController(IResProduct _product)
         {
             _productResponsitory = _product;

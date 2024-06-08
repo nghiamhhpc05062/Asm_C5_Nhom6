@@ -16,27 +16,66 @@ namespace Asm_C5_Nhom6.Service
 
         public OrderItem AddOrderItem(OrderItem orderItem)
         {
-            throw new System.NotImplementedException();
+            _context.Add(orderItem);
+            _context.SaveChanges();
+            return orderItem;
         }
 
         public OrderItem DeleteOrderItem(int id)
         {
-            throw new System.NotImplementedException();
+            var existingOrderItem = _context.OrderItems.Find(id);
+            if (existingOrderItem == null)
+            {
+                return null;
+            }
+            else
+            {
+                _context.Remove(existingOrderItem);
+                _context.SaveChanges();
+                return existingOrderItem;
+            }
         }
 
         public OrderItem GetIDOrderItem(int id)
         {
-            throw new System.NotImplementedException();
+            var orderitem = _context.OrderItems.Find(id);
+            if (orderitem == null)
+            {
+                return null;
+            }
+
+
+            return (OrderItem)orderitem;
         }
 
         public IEnumerable<OrderItem> GetOrderItem()
         {
-            throw new System.NotImplementedException();
+            return _context.OrderItems.ToList();
         }
 
-        public OrderItem UpdateOrderItem(int id, OrderItem orderItem)
+        public OrderItem UpdateOrderItem(int id, OrderItem orderitemupdate)
         {
-            throw new System.NotImplementedException();
+            var existingOrderItem = _context.OrderItems.Find(id);
+            if (existingOrderItem == null)
+            {
+                return null;
+            }
+            existingOrderItem.Quantity = orderitemupdate.Quantity;
+            existingOrderItem.Price = orderitemupdate.Price;
+            existingOrderItem.ProductId = orderitemupdate.ProductId;
+            existingOrderItem.OrderId = orderitemupdate.OrderId;
+
+            _context.Update(existingOrderItem);
+            _context.SaveChanges();
+            return existingOrderItem;
         }
+
+
+
+        public IEnumerable<OrderItem> GetOrderItems()
+        {
+            return GetOrderItems();
+        }
+
     }
 }
