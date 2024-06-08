@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Asm_C5_Nhom6.Migrations
 {
     [DbContext(typeof(AppDbcontext))]
-    [Migration("20240607074623_User")]
+    [Migration("20240608095908_User")]
     partial class User
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -246,6 +246,9 @@ namespace Asm_C5_Nhom6.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("role")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");

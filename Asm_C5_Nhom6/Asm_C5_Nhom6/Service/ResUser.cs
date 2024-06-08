@@ -60,6 +60,7 @@ namespace Asm_C5_Nhom6.Service
             existinguser.Password = userupdate.Password;
             existinguser.Phone = userupdate.Phone;
             existinguser.Address = userupdate.Address;
+            existinguser.role = userupdate.role;
             existinguser.IsDelete = userupdate.IsDelete;
 
             _context.Update(existinguser);

@@ -44,6 +44,7 @@ namespace Asm_C5_Nhom6.Controllers
                 Password = user.Password,
                 Phone = user.Phone,
                 Address = user.Address,
+                role = user.role,
                 IsDelete = user.IsDelete,
 
             });
